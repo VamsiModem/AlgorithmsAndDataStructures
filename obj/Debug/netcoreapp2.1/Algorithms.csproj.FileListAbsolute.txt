@@ -9,3 +9,14 @@ C:\Users\Hack3r552\Documents\Algorithms\obj\Debug\netcoreapp2.1\Algorithms.Assem
 C:\Users\Hack3r552\Documents\Algorithms\obj\Debug\netcoreapp2.1\Algorithms.AssemblyInfo.cs
 C:\Users\Hack3r552\Documents\Algorithms\obj\Debug\netcoreapp2.1\Algorithms.dll
 C:\Users\Hack3r552\Documents\Algorithms\obj\Debug\netcoreapp2.1\Algorithms.pdb
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\bin\Debug\netcoreapp2.1\Algorithms.deps.json
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\bin\Debug\netcoreapp2.1\Algorithms.runtimeconfig.json
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\bin\Debug\netcoreapp2.1\Algorithms.runtimeconfig.dev.json
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\bin\Debug\netcoreapp2.1\Algorithms.dll
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\bin\Debug\netcoreapp2.1\Algorithms.pdb
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.csprojAssemblyReference.cache
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.AssemblyInfoInputs.cache
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.AssemblyInfo.cs
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.dll
+C:\Users\vmodem\Documents\AlgorithmsAndDs-master\AlgorithmsAndDs\obj\Debug\netcoreapp2.1\Algorithms.pdb
