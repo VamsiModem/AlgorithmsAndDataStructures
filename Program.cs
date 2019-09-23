@@ -6,8 +6,8 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-     
+            var x = StringProblems.ReverseWordsInString("Hello World!");
+            Console.WriteLine(x);
         }
     }
 }
