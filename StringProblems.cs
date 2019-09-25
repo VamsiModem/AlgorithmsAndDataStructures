@@ -25,6 +25,6 @@ public static class StringProblems{
             }
         }
         ReverseString(start, length - 1, sb);
-        return sb.ToString() ;
+        return sb.ToString();
     }
 }
