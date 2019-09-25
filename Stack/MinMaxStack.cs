@@ -8,8 +8,8 @@ namespace Algorithms
 {
     public class MinMaxStack {
         private List<MinMaxStackElement> _stack = new List<MinMaxStackElement>();
-        public int? Min => this.Peek().Min;
-        public int? Max => this.Peek().Max;
+        public int? Min => this.Peek()?.Min;
+        public int? Max => this.Peek()?.Max;
         public void Push(int value){
             this._stack.Add(
                 new MinMaxStackElement
