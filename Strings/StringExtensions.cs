@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Algorithms.Strings{
+    public static class StringExtensions{
+        public static bool HasUniqueCharacters(this string s){
+            if(s.Length == 0){ return true; }
+            bool[] asciiChars = new bool[26];
+            char[] charArr = s.ToCharArray();
+            for(int i = 0; i < charArr.Length; i++){
+                if(asciiChars[charArr[i] - 'a']){ return false; }
+                else{ asciiChars[charArr[i] - 'a'] = true; }
+            }
+            return true;
+        }
+        public static void Reverse(this StringBuilder sb, int start, int end){
+            int mid = (start + end)/2;
+            while(start <= mid){
+                char temp = sb[start];
+                sb[start] = sb[end];
+                sb[end] = temp; 
+                start++;
+                end--;
+            }
+        }
+        public static string ReverseWordsInString(this string s){
+            int length = s.Length;
+            if(length == 0){return s;}
+            StringBuilder sb = new StringBuilder(s);
+            sb.Reverse(0, length - 1);
+            int start = 0;
+            for(int i = 0; i < length; i++){
+                if(sb[i] == ' '){
+                    sb.Reverse(start, i - 1);
+                    start = i + 1;
+                }
+            }
+            sb.Reverse(start, length - 1);
+            return sb.ToString() ;
+        }
+        public static bool IsPermutation(this string s1, string s2){
+            if(s1.Length != s2.Length){ return false; }
+            HashSet<char> set = new HashSet<char>(s1.ToCharArray());
+            char[] chars = s2.ToCharArray();
+            for(int i = 0; i < s2.Length; i++){
+                if(!set.Contains(chars[i])){ return false; }
+            }
+            return true;
+        }
+    }
+}
