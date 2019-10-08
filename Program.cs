@@ -26,6 +26,7 @@ namespace Algorithms
             // new int[] {2, 7, 11, 15}.TwoSum(9).Print();
             //Console.WriteLine("vamsiv".HasUniqueCharacters());
             Console.WriteLine("vamgsi".IsPermutation("aitsv"));
+            Console.WriteLine("aabcccccaaa".CompressString());
             Console.ReadLine();
         }
     }

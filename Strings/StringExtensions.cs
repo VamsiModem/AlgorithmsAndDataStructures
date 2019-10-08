@@ -48,5 +48,36 @@ namespace Algorithms.Strings{
             }
             return true;
         }
+
+        public static bool IsPalindromePermutation(this string s){
+            if(s.Length == 0){ return false; }
+            char[] chars = s.ToCharArray();
+            Dictionary<char, int> map = new Dictionary<char, int>();
+            for(int i = 0; i < s.Length; i++){
+                if(map.ContainsKey(chars[i])){ map[chars[i]]++; }
+                else{ map.Add(chars[i], 1); }
+            }
+            int numberOfOdds = 0;
+            foreach(var kvp in map){
+                if((kvp.Value % 2) != 0){ numberOfOdds++; }
+            }
+            return numberOfOdds <= 1;
+        }
+
+        public static string CompressString(this string s){
+            if(s.Length == 0){ return s; }
+            StringBuilder sb = new StringBuilder();
+            char[] chars = s.ToCharArray();
+            int count = 0;
+            for(int i = 0; i < s.Length; i++){
+                count++;
+                if(i + 1 >= s.Length || chars[i] != chars[i + 1]){
+                    sb.Append(chars[i]);
+                    sb.Append(count);
+                    count = 0;
+                }
+            }
+            return sb.ToString();
+        }
     }
 }
