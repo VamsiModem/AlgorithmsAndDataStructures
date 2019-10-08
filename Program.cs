@@ -38,6 +38,7 @@ namespace Algorithms
             list.Add(13);
             list.Reverse();
             list.RemoveDuplicates();
+            var perm = "vgamsi".Permute();
             Console.WriteLine(list.KthToTheLast(5));
             Console.ReadLine();
         }

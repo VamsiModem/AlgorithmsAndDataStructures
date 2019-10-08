@@ -92,5 +92,30 @@ namespace Algorithms.Strings{
             }
             return sb.ToString();
         }
+
+        public static List<string> Permute(this string s){
+            List<string> output = new List<string>();
+            if(s.Length == 0){ return output; }
+            char[] chars = s.ToCharArray();
+            var counts = new Dictionary<char, int>();
+            for(int i = 0; i < chars.Length; i++){
+                if(counts.ContainsKey(chars[i])){ counts[chars[i]]++; }
+                else{ counts.Add(chars[i], 1);}
+            }
+            PermuterHelper(chars, output, counts, 0, new char[s.Length]);
+            return output;
+        }
+
+        private static void PermuterHelper(char[] chars, List<string> output, Dictionary<char, int> counts, int level, char[] result){
+            if (level == result.Length) { output.Add(new String(result)); }
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (counts[chars[i]] == 0) { continue; }
+                result[level] = chars[i];
+                counts[chars[i]]--;
+                PermuterHelper(chars, output, counts, level + 1, result);
+                counts[chars[i]]++;
+            }
+        }
     }
 }
