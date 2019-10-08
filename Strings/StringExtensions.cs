@@ -49,7 +49,6 @@ namespace Algorithms.Strings{
             return true;
         }
 
-<<<<<<< HEAD
         public static string LongestSubstringWithoutRepeatingChars(this string s){
             if(s.Length == 0){ return s; }
             int[] asciiChars = new int[256];
@@ -62,7 +61,7 @@ namespace Algorithms.Strings{
                 asciiChars[chars[end]]++;
             }
             return s.Substring(start, result);
-=======
+        }
         public static bool IsPalindromePermutation(this string s){
             if(s.Length == 0){ return false; }
             char[] chars = s.ToCharArray();
@@ -92,7 +91,6 @@ namespace Algorithms.Strings{
                 }
             }
             return sb.ToString();
->>>>>>> 9645291238725531dff39f21e8f5f97e409c62b9
         }
     }
 }
