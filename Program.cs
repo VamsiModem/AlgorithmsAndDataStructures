@@ -1,5 +1,6 @@
 ﻿using System;
 using Algorithms.Arrays;
+using Algorithms.LinkedLists.SingleLinkedList;
 using Algorithms.Strings;
 namespace Algorithms
 {
@@ -26,11 +27,18 @@ namespace Algorithms
             // new int[] {2, 7, 11, 15}.TwoSum(9).Print();
             //Console.WriteLine("vamsiv".HasUniqueCharacters());
             Console.WriteLine("vamgsi".IsPermutation("aitsv"));
-<<<<<<< HEAD
             Console.WriteLine("abcababc".LongestSubstringWithoutRepeatingChars());
-=======
             Console.WriteLine("aabcccccaaa".CompressString());
->>>>>>> 9645291238725531dff39f21e8f5f97e409c62b9
+            SingleLinkedList list = new SingleLinkedList();
+            list.Add(5);
+            list.Add(10);
+            list.Add(11);
+            list.Add(4);
+            list.Add(11);
+            list.Add(13);
+            list.Reverse();
+            list.RemoveDuplicates();
+            Console.WriteLine(list.KthToTheLast(5));
             Console.ReadLine();
         }
     }
