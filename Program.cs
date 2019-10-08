@@ -26,7 +26,11 @@ namespace Algorithms
             // new int[] {2, 7, 11, 15}.TwoSum(9).Print();
             //Console.WriteLine("vamsiv".HasUniqueCharacters());
             Console.WriteLine("vamgsi".IsPermutation("aitsv"));
+<<<<<<< HEAD
             Console.WriteLine("abcababc".LongestSubstringWithoutRepeatingChars());
+=======
+            Console.WriteLine("aabcccccaaa".CompressString());
+>>>>>>> 9645291238725531dff39f21e8f5f97e409c62b9
             Console.ReadLine();
         }
     }
