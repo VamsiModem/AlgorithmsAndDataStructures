@@ -1,5 +1,6 @@
 ﻿using System;
 using Algorithms.Arrays;
+using Algorithms.Cache;
 using Algorithms.LinkedLists.SingleLinkedList;
 using Algorithms.Strings;
 namespace Algorithms
@@ -27,7 +28,7 @@ namespace Algorithms
             // new int[] {2, 7, 11, 15}.TwoSum(9).Print();
             //Console.WriteLine("vamsiv".HasUniqueCharacters());
             Console.WriteLine("vamgsi".IsPermutation("aitsv"));
-            Console.WriteLine("abcababc".LongestSubstringWithoutRepeatingChars());
+
             Console.WriteLine("aabcccccaaa".CompressString());
             SingleLinkedList list = new SingleLinkedList();
             list.Add(5);
@@ -38,9 +39,20 @@ namespace Algorithms
             list.Add(13);
             list.Reverse();
             list.RemoveDuplicates();
-            var perm = "vgamsi".Permute();
+            new int[]{2,2,1}.GetUniqueNumber();
+            //var perm = "vgamsi".Permute();
             Console.WriteLine(list.KthToTheLast(5));
+            LRUCache cache = new LRUCache(3);
+            cache.Put(1,858);
+            cache.Put(2,8);
+            cache.Put(4,558);
+            cache.Get(2);
+            cache.Put(8,789);
+            new int[] {1,2,6,0,0,0}.MergeSortedArray(3, new int[] {2,3,5}, 3);
+            new int[] {1}.SearchInRotatedArray(0);
+            new int[] {2, 7, 11, 15}.Rotate(2);
             Console.ReadLine();
+            
         }
     }
 }
