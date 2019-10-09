@@ -27,30 +27,41 @@ namespace Algorithms
             // Console.WriteLine(stack.Max);
             // new int[] {2, 7, 11, 15}.TwoSum(9).Print();
             //Console.WriteLine("vamsiv".HasUniqueCharacters());
-            Console.WriteLine("vamgsi".IsPermutation("aitsv"));
+            // Console.WriteLine("vamgsi".IsPermutation("aitsv"));
 
-            Console.WriteLine("aabcccccaaa".CompressString());
-            SingleLinkedList list = new SingleLinkedList();
-            list.Add(5);
-            list.Add(10);
-            list.Add(11);
-            list.Add(4);
-            list.Add(11);
-            list.Add(13);
-            list.Reverse();
-            list.RemoveDuplicates();
-            new int[]{2,2,1}.GetUniqueNumber();
-            //var perm = "vgamsi".Permute();
-            Console.WriteLine(list.KthToTheLast(5));
-            LRUCache cache = new LRUCache(3);
-            cache.Put(1,858);
-            cache.Put(2,8);
-            cache.Put(4,558);
-            cache.Get(2);
-            cache.Put(8,789);
-            new int[] {1,2,6,0,0,0}.MergeSortedArray(3, new int[] {2,3,5}, 3);
-            new int[] {1}.SearchInRotatedArray(0);
-            new int[] {2, 7, 11, 15}.Rotate(2);
+            // Console.WriteLine("aabcccccaaa".CompressString());
+            // SingleLinkedList list = new SingleLinkedList();
+            // list.Add(5);
+            // list.Add(10);
+            // list.Add(11);
+            // list.Add(4);
+            // list.Add(11);
+            // list.Add(13);
+            // list.Reverse();
+            // list.RemoveDuplicates();
+            // new int[]{2,2,1}.GetUniqueNumber();
+            // //var perm = "vgamsi".Permute();
+            // Console.WriteLine(list.KthToTheLast(5));
+            // LRUCache cache = new LRUCache(3);
+            // cache.Put(1,858);
+            // cache.Put(2,8);
+            // cache.Put(4,558);
+            // cache.Get(2);
+            // cache.Put(8,789);
+            // new int[] {1,2,6,0,0,0}.MergeSortedArray(3, new int[] {2,3,5}, 3);
+            // new int[] {1}.SearchInRotatedArray(0);
+            // new int[] {2, 7, 11, 15}.Rotate(2);
+            // new int[] {0,1,0,2,1,0,1,3,2,1,2,1}.TrapRainWater();
+            new int[,] {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+            }.PrintSpiral();
+            new int[,] {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+            }.Rotate();
             Console.ReadLine();
             
         }

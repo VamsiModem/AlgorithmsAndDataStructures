@@ -52,7 +52,6 @@ namespace Algorithms.Arrays{
             Array.Copy(arr2, 0, arr1,0, q+1);
             arr1.Print();
         }
-
         public static void Reverse(this int[] arr, int start, int end){
             int mid = (start + end) / 2;
             while(start <= mid){
@@ -63,7 +62,6 @@ namespace Algorithms.Arrays{
                 end--;
             }
         }
-
         public static void Rotate(this int[] arr, int rotateBy){
             if(rotateBy > arr.Length){ return; }
             arr.Reverse(0, rotateBy - 1);
@@ -71,7 +69,6 @@ namespace Algorithms.Arrays{
             arr.Reverse(0, arr.Length - 1);
             arr.Print();
         }
-
         public static int SearchInRotatedArray(this int[] arr, int element){
             if(arr.Length == 0){ return -1;}
             int start = 0;
@@ -90,7 +87,6 @@ namespace Algorithms.Arrays{
             }
             return -1;
         }
-
         public static int FindMinimumInASortedArray(this int[] arr){
             if(arr.Length == 0){ return -1;}
             if(arr.Length == 1){ return arr[0];}
@@ -106,6 +102,23 @@ namespace Algorithms.Arrays{
                 }
             }
             return arr[start];
+        }
+        //[0,1,0,2,1,0,1,3,2,1,2,1]
+        public static int TrapRainWater(this int[] arr){
+            if(arr.Length == 0){ return 0; }
+            int left = 0, right = arr.Length - 1, ans = 0, leftMax = 0, rightMax = 0;
+            while(left < right){
+                if(arr[left] < arr[right]){
+                    if(arr[left] >= leftMax){ leftMax = arr[left]; }
+                    else{ ans += (leftMax - arr[left]); }
+                    left++;
+                }else{
+                    if(arr[right] >= rightMax){ rightMax = arr[right]; }
+                    else{ ans += (rightMax - arr[right]); }
+                    right--;
+                }
+            }
+            return ans;
         }
     }
 
