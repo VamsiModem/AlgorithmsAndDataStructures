@@ -92,7 +92,7 @@ namespace Algorithms.Strings{
             }
             return sb.ToString();
         }
-
+        //This doesn't handle duplicates
         public static List<string> Permute(this string s){
             List<string> output = new List<string>();
             if(s.Length == 0){ return output; }
