@@ -49,19 +49,6 @@ namespace Algorithms.Strings{
             return true;
         }
 
-        public static string LongestSubstringWithoutRepeatingChars(this string s){
-            if(s.Length == 0){ return s; }
-            int[] asciiChars = new int[256];
-            char[] chars = s.ToCharArray();
-            int start = 0, end = 0, result = 0;
-            while(start < s.Length){
-                if(asciiChars[chars[end]] > 0){
-                    start = Math.Max(start, asciiChars[chars[end]]);
-                }
-                asciiChars[chars[end]]++;
-            }
-            return s.Substring(start, result);
-        }
         public static bool IsPalindromePermutation(this string s){
             if(s.Length == 0){ return false; }
             char[] chars = s.ToCharArray();
@@ -90,32 +77,8 @@ namespace Algorithms.Strings{
                     count = 0;
                 }
             }
-            return sb.ToString();
-        }
-
-        public static List<string> Permute(this string s){
-            List<string> output = new List<string>();
-            if(s.Length == 0){ return output; }
-            char[] chars = s.ToCharArray();
-            var counts = new Dictionary<char, int>();
-            for(int i = 0; i < chars.Length; i++){
-                if(counts.ContainsKey(chars[i])){ counts[chars[i]]++; }
-                else{ counts.Add(chars[i], 1);}
-            }
-            PermuterHelper(chars, output, counts, 0, new char[s.Length]);
-            return output;
-        }
-
-        private static void PermuterHelper(char[] chars, List<string> output, Dictionary<char, int> counts, int level, char[] result){
-            if (level == result.Length) { output.Add(new String(result)); }
-            for (int i = 0; i < chars.Length; i++)
-            {
-                if (counts[chars[i]] == 0) { continue; }
-                result[level] = chars[i];
-                counts[chars[i]]--;
-                PermuterHelper(chars, output, counts, level + 1, result);
-                counts[chars[i]]++;
-            }
+            string output = sb.ToString();
+            return output.Length >= s.Length ? output : s;
         }
     }
 }
