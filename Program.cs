@@ -52,24 +52,21 @@ namespace Algorithms
             // new int[] {1}.SearchInRotatedArray(0);
             // new int[] {2, 7, 11, 15}.Rotate(2);
             // new int[] {0,1,0,2,1,0,1,3,2,1,2,1}.TrapRainWater();
-            new int[,] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-            }.PrintSpiral();
-            new int[,] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-            }.Rotate();
+            // new int[,] {
+            //     {1, 2, 3},
+            //     {4, 5, 6},
+            //     {7, 8, 9}
+            // }.PrintSpiral();
+            // new int[,] {
+            //     {1, 2, 3},
+            //     {4, 5, 6},
+            //     {7, 8, 9}
+            // }.Rotate();
+            Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
             Console.ReadLine();
             
         }
     }
 }
 
-public class Rbac{
-    public string Source { get; set; }
-    public string Cmd { get; set; }
-    public string[] Scopes { get; set; }
-}
+

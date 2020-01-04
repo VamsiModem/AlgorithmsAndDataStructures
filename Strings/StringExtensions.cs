@@ -104,5 +104,24 @@ namespace Algorithms.Strings{
                 counts[chars[i]]++;
             }
         }
+
+        public static int MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters(this string s){
+            char[] charArr = s.ToCharArray();
+            int minMoves = 0;
+            if(s.Length < 3){ return minMoves; }
+            int charCount = 1;
+            for(int i = 1 ; i < s.Length ; i++){
+                if(s[i - 1] == s[i]){
+                    charCount++;
+                    if(3 == charCount){
+                        charCount = 1;
+                        minMoves++;
+                    }
+                }else{
+                    charCount = 1;
+                }
+            }
+            return minMoves;
+        } 
     }
 }
