@@ -44,5 +44,29 @@ namespace Algorithms.Arrays{
         public static int Search(this int[,] arr, int element){
             return -1;
         }
+
+        public static int MeetingRoomsII(this int [,] arr){
+            int roomsNeeded = 0;
+            int length = arr.GetLength(0);
+            if(length == 0){return roomsNeeded;}
+            int[] startingTimes = new int[length];
+            int[] endingTimes = new int[length];
+            for(int i = 0; i < length; i++){
+                startingTimes[i] = arr[i,0];
+                endingTimes[i] = arr[i,1];
+            }
+            Array.Sort(startingTimes);
+            Array.Sort(endingTimes);
+            int startingPosition = 0, endingPosition = 0;
+            while(startingPosition < length){
+                if(startingTimes[startingPosition] >= endingTimes[endingPosition]){
+                    endingPosition++;
+                    roomsNeeded--;
+                }
+                startingPosition++;
+                roomsNeeded++;
+            }
+            return roomsNeeded;
+        }
     }
 }

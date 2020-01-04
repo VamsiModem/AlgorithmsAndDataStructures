@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BenchmarkDotNet.Attributes;
 
 namespace Algorithms.Strings{
     public static class StringExtensions{
@@ -103,6 +104,45 @@ namespace Algorithms.Strings{
                 PermuterHelper(chars, output, counts, level + 1, result);
                 counts[chars[i]]++;
             }
+        }
+        [Benchmark]
+        public static string LongestCommonSubSequence(this string s1, string s2){
+            int string1Length = s1.Length;
+            int string2Length = s2.Length;
+            if(string1Length < string2Length) return s2.LongestCommonSubSequence(s1);
+            StringBuilder result = new StringBuilder();
+            int[] memo = new int[string2Length + 1];
+            for(int row = 1; row <= string1Length; row++){
+                int prev = 0;
+                for(int col = 1; col <= string2Length; col++){
+                    int temp = memo[col];
+                    if(s1[row - 1] == s2[col - 1]){
+                        memo[col] = prev + 1;
+                        result.Append(s1[row - 1]);
+                    }else{
+                        memo[col] = Math.Max(memo[col], memo[col - 1]);
+                    }
+                    prev = temp;
+                }
+            }
+            return result.ToString();
+        }
+
+        public static string LexicographicallySmallestString(this string s){
+            if(s.Length == 0)return s;
+            StringBuilder result = new StringBuilder(s);
+            const int MAX_DELETIONS_POSSIBLE = 1;
+            int deletedCount = 0;
+            for(int i = 0; i < s.Length - 1; i++){
+                if((s[i] > s[i + 1]) && deletedCount < MAX_DELETIONS_POSSIBLE){
+                    result.Remove(i,1);
+                    deletedCount++;
+                }
+            }
+            if(deletedCount < MAX_DELETIONS_POSSIBLE){
+                result.Remove(result.Length - 1,1);
+            }
+            return result.ToString();
         }
     }
 }

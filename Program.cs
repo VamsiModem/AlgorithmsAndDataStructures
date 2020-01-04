@@ -3,12 +3,15 @@ using Algorithms.Arrays;
 using Algorithms.Cache;
 using Algorithms.LinkedLists.SingleLinkedList;
 using Algorithms.Strings;
+using BenchmarkDotNet.Running;
+
 namespace Algorithms
 {
     class Program
     {
         static void Main(string[] args)
         {
+            
             var x = "Hello World!".ReverseWordsInString();
             Console.WriteLine(x);
             // MinMaxStack stack = new MinMaxStack();
@@ -52,24 +55,27 @@ namespace Algorithms
             // new int[] {1}.SearchInRotatedArray(0);
             // new int[] {2, 7, 11, 15}.Rotate(2);
             // new int[] {0,1,0,2,1,0,1,3,2,1,2,1}.TrapRainWater();
-            new int[,] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-            }.PrintSpiral();
-            new int[,] {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-            }.Rotate();
+            // new int[,] {
+            //     {1, 2, 3},
+            //     {4, 5, 6},
+            //     {7, 8, 9}
+            // }.PrintSpiral();
+            // new int[,] {
+            //     {1, 2, 3},
+            //     {4, 5, 6},
+            //     {7, 8, 9}
+            // }.Rotate();
+            //  Console.WriteLine(new int[,] {
+            //     {0,30},
+            //     {5,16},
+            //     {15,20}
+            // }.MeetingRoomsII());
+            Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
+            Console.WriteLine("abcde".LexicographicallySmallestString());
+            var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
             Console.ReadLine();
             
         }
     }
 }
 
-public class Rbac{
-    public string Source { get; set; }
-    public string Cmd { get; set; }
-    public string[] Scopes { get; set; }
-}
