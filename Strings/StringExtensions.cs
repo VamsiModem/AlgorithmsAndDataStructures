@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Algorithms.Models;
 using BenchmarkDotNet.Attributes;
 
 namespace Algorithms.Strings{
@@ -143,6 +145,40 @@ namespace Algorithms.Strings{
                 result.Remove(result.Length - 1,1);
             }
             return result.ToString();
+        }
+
+        public static int MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters(this string s){
+            char[] charArr = s.ToCharArray();
+            int minMoves = 0;
+            if(s.Length < 3){ return minMoves; }
+            int charCount = 1;
+            for(int i = 1 ; i < s.Length ; i++){
+                if(s[i - 1] == s[i]){
+                    charCount++;
+                    if(3 == charCount){
+                        charCount = 1;
+                        minMoves++;
+                    }
+                }else{
+                    charCount = 1;
+                }
+            }
+            return minMoves;
+        } 
+
+        public static BSTNode Deserilize(this string s){
+            Queue<string> queue = new Queue<string>();
+            s.Split(',').ToList().ForEach(x => queue.Enqueue(x));
+            return DeserilizeHelper(queue);
+        }
+
+        private static BSTNode DeserilizeHelper(Queue<string> queue){
+            string nodeValue = queue.Dequeue();
+            if(nodeValue.Equals("X")) return null;
+            BSTNode node = new BSTNode(Convert.ToInt32(nodeValue));
+            node.Left = DeserilizeHelper(queue);
+            node.Right = DeserilizeHelper(queue);
+            return node;
         }
     }
 }

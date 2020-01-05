@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Algorithms.Models;
+using Algorithms.Trees;
 
 namespace Algorithms.Arrays{
     public static class IntegerArrayExtensions{
@@ -119,6 +121,15 @@ namespace Algorithms.Arrays{
                 }
             }
             return ans;
+        }
+
+        public static BSTNode ToBSTree(this int[] arr){
+            BSTNode node = null;
+            BSTree tree = new BSTree();
+            foreach(var a in arr){
+                node = tree.Insert(node, a);
+            }
+            return node;
         }
     }
 

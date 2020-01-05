@@ -3,6 +3,7 @@ using Algorithms.Arrays;
 using Algorithms.Cache;
 using Algorithms.LinkedLists.SingleLinkedList;
 using Algorithms.Strings;
+using Algorithms.Trees;
 using BenchmarkDotNet.Running;
 
 namespace Algorithms
@@ -73,9 +74,14 @@ namespace Algorithms
             Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
             Console.WriteLine("abcde".LexicographicallySmallestString());
             var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
+            Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
+            var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
+            var node = tree.Serialize().Deserilize();
+            BSTIterator iter = new BSTIterator(tree);
             Console.ReadLine();
             
         }
     }
 }
+
 
