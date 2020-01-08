@@ -1,10 +1,9 @@
 ﻿using System;
 using Algorithms.Arrays;
 using Algorithms.Cache;
-using Algorithms.LinkedLists.SingleLinkedList;
+using Algorithms.LinkedLists;
 using Algorithms.Strings;
 using Algorithms.Trees;
-using BenchmarkDotNet.Running;
 using Algorithms.Tries;
 
 namespace Algorithms
@@ -74,7 +73,6 @@ namespace Algorithms
             // }.MeetingRoomsII());
             Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
             Console.WriteLine("abcde".LexicographicallySmallestString());
-            var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
             Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
             var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
             var node = tree.Serialize().Deserilize();
@@ -82,6 +80,8 @@ namespace Algorithms
             string[] array = new string[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
             Trie trie = array.ToTrie();
             var cw = trie.ConcatnatedWords(array);
+            new int[] {9,9}.ToSingleLinkedList().Add(new int[] {1}.ToSingleLinkedList()).Print();
+            new int[] {1,2,3,3,4,4,5}.ToSingleLinkedList().DeleteDuplicates().Print();
             Console.ReadLine();
             
         }

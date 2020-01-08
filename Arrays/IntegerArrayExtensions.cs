@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Algorithms.Models;
 using Algorithms.Trees;
+using static Algorithms.LinkedLists.SingleLinkedList;
 
 namespace Algorithms.Arrays{
     public static class IntegerArrayExtensions{
@@ -130,6 +131,19 @@ namespace Algorithms.Arrays{
                 node = tree.Insert(node, a);
             }
             return node;
+        }
+
+        public static Node ToSingleLinkedList(this int[] arr){
+            if(arr.Length == 0) return null;
+            Node dummy = new Node(-1);
+            Node current = new Node(arr[0]);
+            dummy.Next = current;
+            int i = 1;
+            while(i < arr.Length){
+                current.Next = new Node(arr[i++]);
+                current = current.Next;
+            }
+            return dummy.Next;
         }
     }
 

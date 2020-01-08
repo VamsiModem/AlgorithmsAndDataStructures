@@ -108,7 +108,6 @@ namespace Algorithms.Strings{
                 counts[chars[i]]++;
             }
         }
-        [Benchmark]
         public static string LongestCommonSubSequence(this string s1, string s2){
             int string1Length = s1.Length;
             int string2Length = s2.Length;
