@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Algorithms.Models;
 using BenchmarkDotNet.Attributes;
+using Algorithms.Tries;
 
 namespace Algorithms.Strings{
     public static class StringExtensions{
@@ -179,6 +180,14 @@ namespace Algorithms.Strings{
             node.Left = DeserilizeHelper(queue);
             node.Right = DeserilizeHelper(queue);
             return node;
+        }
+
+        public static Trie ToTrie(this string[] arr){
+            Trie trie = new Trie();
+            foreach(string s in arr){
+                trie.Insert(s);
+            }
+            return trie;
         }
     }
 }

@@ -5,6 +5,7 @@ using Algorithms.LinkedLists.SingleLinkedList;
 using Algorithms.Strings;
 using Algorithms.Trees;
 using BenchmarkDotNet.Running;
+using Algorithms.Tries;
 
 namespace Algorithms
 {
@@ -78,6 +79,9 @@ namespace Algorithms
             var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
             var node = tree.Serialize().Deserilize();
             BSTIterator iter = new BSTIterator(tree);
+            string[] array = new string[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
+            Trie trie = array.ToTrie();
+            var cw = trie.ConcatnatedWords(array);
             Console.ReadLine();
             
         }
