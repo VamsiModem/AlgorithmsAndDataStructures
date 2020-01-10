@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Algorithms.LinkedLists
 {
     public static class SingleLinkedListExtensions{
-        public static Node Reverse(this Node node){
+        public static Node ReverseInplace(this Node node){
             Node current = node, prev = null, next = null;
             while(current != null){
                 next = current.Next;
@@ -15,6 +15,30 @@ namespace Algorithms.LinkedLists
                 current = next;
             }
             return prev;
+        }
+        public static Node Reverse(this Node node){
+            Node newNode = node.Copy();
+            Node current = newNode, prev = null, next = null;
+            while(current != null){
+                next = current.Next;
+                current.Next = prev;
+                prev = current;
+                current = next;
+            }
+            return prev;
+        }
+
+        public static Node Copy(this Node node){
+            Node newNode = new Node(node.Data);
+            Node current = newNode;
+            node = node.Next;
+            while(node != null){
+                Node n2 = new Node(node.Data);
+                current.Next = n2;
+                current = n2;
+                node = node.Next;
+            }
+            return newNode;
         }
 
         public static void Print(this Node node){
@@ -30,8 +54,8 @@ namespace Algorithms.LinkedLists
         }
 
         public static Node Add(this Node node1, Node node2){
-            Node reversedNode1 = node1.Reverse();
-            Node reversedNode2 = node2.Reverse();
+            Node reversedNode1 = node1.ReverseInplace();
+            Node reversedNode2 = node2.ReverseInplace();
             Node dummy = new Node(-1);
             Node sumNode = dummy;
             int carry = 0;
@@ -44,7 +68,7 @@ namespace Algorithms.LinkedLists
                 reversedNode2 = reversedNode2?.Next;
             }
             if(carry > 0) sumNode.Next = new Node(carry);
-            return dummy.Next.Reverse();
+            return dummy.Next.ReverseInplace();
         }
 
         public static Node DeleteDuplicates(this Node node){
@@ -61,6 +85,37 @@ namespace Algorithms.LinkedLists
                 current = current.Next;
             }
             return node;
+        }
+
+        public static Node ReorderList(this Node head) {
+            if(head is null) return head;
+            Node current = head;
+            Node test = head;
+            Node reversed = current.Reverse();
+            int length = head.Length();
+            int count = 0;
+            current = head;
+            while(reversed != null && count < ((length)/2)){
+                Node rnext = reversed.Next;
+                Node cnext = current.Next;
+                
+                current.Next = reversed;
+                reversed.Next = cnext;
+                reversed = rnext;
+                current = cnext;
+                count++;
+            }
+            return head;
+        }
+
+        public static int Length(this Node head){
+            Node current = head;
+            int length = 0;
+            while(current != null){
+                length++;
+                current = current.Next;
+            }
+            return length;
         }
     }
 }

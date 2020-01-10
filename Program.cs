@@ -5,6 +5,7 @@ using Algorithms.LinkedLists;
 using Algorithms.Strings;
 using Algorithms.Trees;
 using Algorithms.Tries;
+using System.Text;
 
 namespace Algorithms
 {
@@ -13,8 +14,8 @@ namespace Algorithms
         static void Main(string[] args)
         {
             
-            var x = "Hello World!".ReverseWordsInString();
-            Console.WriteLine(x);
+            //var x = "Hello World!".ReverseWordsInString();
+            //Console.WriteLine(x);
             // MinMaxStack stack = new MinMaxStack();
             // stack.Push(5);
             // stack.Push(2);
@@ -71,17 +72,20 @@ namespace Algorithms
             //     {5,16},
             //     {15,20}
             // }.MeetingRoomsII());
-            Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
-            Console.WriteLine("abcde".LexicographicallySmallestString());
-            Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
-            var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
-            var node = tree.Serialize().Deserilize();
-            BSTIterator iter = new BSTIterator(tree);
-            string[] array = new string[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
-            Trie trie = array.ToTrie();
-            var cw = trie.ConcatnatedWords(array);
-            new int[] {9,9}.ToSingleLinkedList().Add(new int[] {1}.ToSingleLinkedList()).Print();
-            new int[] {1,2,3,3,4,4,5}.ToSingleLinkedList().DeleteDuplicates().Print();
+            // Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
+            // Console.WriteLine("abcde".LexicographicallySmallestString());
+            // Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
+            // var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
+            // var node = tree.Serialize().Deserilize();
+            // BSTIterator iter = new BSTIterator(tree);
+            // string[] array = new string[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
+            // Trie trie = array.ToTrie();
+            // var cw = trie.ConcatnatedWords(array);
+            // new int[] {9,9}.ToSingleLinkedList().Add(new int[] {1}.ToSingleLinkedList()).Print();
+            //  new int[] {1,2,3,4}.ToSingleLinkedList().ReorderList().Print();
+            // Console.WriteLine("-2147483649".ToInteger());
+            Console.WriteLine("  hello world!  ".ReverseWordsInString());
+            //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
             Console.ReadLine();
             
         }

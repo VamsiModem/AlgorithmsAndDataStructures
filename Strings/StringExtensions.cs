@@ -18,7 +18,7 @@ namespace Algorithms.Strings{
             }
             return true;
         }
-        public static void Reverse(this StringBuilder sb, int start, int end){
+        public static StringBuilder Reverse(this StringBuilder sb, int start, int end){
             int mid = (start + end)/2;
             while(start <= mid){
                 char temp = sb[start];
@@ -27,21 +27,54 @@ namespace Algorithms.Strings{
                 start++;
                 end--;
             }
+            return sb;
+        }
+        public static StringBuilder LeftTrim(this StringBuilder sb){
+            int counter = 0;
+            while(char.IsWhiteSpace(sb[counter]))sb.Remove(counter, 1);
+            return sb;
+        }
+        public static StringBuilder RightTrim(this StringBuilder sb){
+            int counter = sb.Length - 1;
+            while(char.IsWhiteSpace(sb[counter])){
+                sb.Remove(counter, 1);
+                counter--;
+            }
+            return sb;
         }
         public static string ReverseWordsInString(this string s){
-            int length = s.Length;
-            if(length == 0){return s;}
-            StringBuilder sb = new StringBuilder(s);
-            sb.Reverse(0, length - 1);
-            int start = 0;
-            for(int i = 0; i < length; i++){
-                if(sb[i] == ' '){
-                    sb.Reverse(start, i - 1);
-                    start = i + 1;
+            if(s is null || s.Equals(string.Empty)) return s;
+            int counter = 0;
+            bool didHitTheFirstChar = false;
+            StringBuilder sb = new StringBuilder();
+            while(counter < s.Length){
+                if(char.IsWhiteSpace(s[counter]) && !didHitTheFirstChar) {
+                    counter++;
+                }else if(!char.IsWhiteSpace(s[counter])){
+                    didHitTheFirstChar = true;
+                    sb.Append(s[counter]);
+                    counter++;
+                }else if(char.IsWhiteSpace(s[counter]) && didHitTheFirstChar){
+                    if(!char.IsWhiteSpace(sb[sb.Length - 1])){
+                         sb.Append(s[counter]);
+                    }
+                    counter++;
                 }
             }
-            sb.Reverse(start, length - 1);
-            return sb.ToString() ;
+            if(sb.Length == 0)return string.Empty;
+            if(char.IsWhiteSpace(sb[sb.Length - 1]))sb.Remove(sb.Length - 1, 1);
+            sb = sb.Reverse(0,sb.Length - 1);
+            counter = 0;
+            int wordStart = 0;
+            while(counter < sb.Length){
+                if(char.IsWhiteSpace(sb[counter])){
+                    sb.Reverse(wordStart, counter - 1);
+                    wordStart = counter + 1;
+                }
+                counter++;
+            }
+            sb.Reverse(wordStart, counter - 1);
+            return sb.ToString();
         }
         public static bool IsPermutation(this string s1, string s2){
             if(s1.Length != s2.Length){ return false; }
@@ -187,6 +220,68 @@ namespace Algorithms.Strings{
                 trie.Insert(s);
             }
             return trie;
+        }
+
+        public static int ToInteger(this string s){
+            if(s.Length == 0) return 0;
+            int result = 0;
+            bool isNegative = false, readSign = false, firstNumberRead = false;
+            for(int i = 0; i < s.Length; i++){
+                bool nospecialCharsAllowed = (!firstNumberRead && !readSign);
+                if(s[i] == ' ' && nospecialCharsAllowed)continue;
+                else if(s[i] == '-' && nospecialCharsAllowed) {
+                    isNegative = true;
+                    readSign = true;
+                }
+                else if(s[i] == '+' && nospecialCharsAllowed) {
+                    isNegative = false;
+                    readSign = true;
+                }
+                else if(s[i] >= '0' && s[i] <= '9'){
+                    firstNumberRead = true;
+                    var num = s[i] - '0';
+                    if(!isNegative){
+                        
+                        if(result > int.MaxValue / 10 || (result == int.MaxValue /10 && num > 7))return int.MaxValue;
+                        else{
+                            result = (result * 10) + num;
+                        }
+                    }else{
+                        if(-result < int.MinValue / 10 || (-result == int.MinValue /10 && -num < -8))return int.MinValue;
+                        else{
+                            result = (result * 10) + num;
+                        }
+                    }
+                }else 
+                    return (isNegative ? -1*result : result);
+            }
+            if(isNegative) result =  -1 * result;
+            if(result > int.MaxValue) return int.MaxValue;
+            if(result < int.MinValue) return int.MinValue;
+            return (int)result;
+        }
+
+        public static string LongestPalindromicSubString(this string s){
+            if(s is null || s.Length == 0) return s;
+            int start = 0, end = 0;
+            for(int i = 0; i < s.Length; i++){
+                int evenLength = ExpandAroundCenter(s, i, i+1);
+                int oddLength = ExpandAroundCenter(s, i, i);
+                int len = Math.Max(evenLength, oddLength);
+                if(len > (end - start)){
+                    start = i - ((len - 1)/2);
+                    end = i + (len / 2);
+                }
+            }
+            return s.Substring(start, end - start);
+        }
+        private static int ExpandAroundCenter(string s, int start, int end){
+            if(s is null || start > end) return 0;
+            while(start >= 0 && end < s.Length && s[start] == s[end]){
+                start--;
+                end++;
+            }
+            return end - start - 1;
         }
     }
 }
