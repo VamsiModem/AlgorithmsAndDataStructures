@@ -18,6 +18,19 @@ namespace Algorithms.LinkedLists{
             public Node Next { get; set; }
             public Node(int data) { this.Data = data; }
         }
+        public override string ToString(){
+            if(_head is null){return string.Empty;}
+            StringBuilder output = new StringBuilder();
+            Node current = this._head;
+            while(current != null){
+                output.Append(current.Data);
+                if(current.Next != null){
+                    output.Append(" -> ");
+                }
+                current = current.Next;
+            }
+            return output.ToString();
+        }
         public void Add(int data){
             Console.WriteLine($"Before Add...");
             this.Print();
@@ -49,6 +62,8 @@ namespace Algorithms.LinkedLists{
             }
             Console.WriteLine(output.ToString());
         }
+
+
 
         public void Reverse(){
             Node prev = null, current = this._head, next = null;
@@ -106,5 +121,7 @@ namespace Algorithms.LinkedLists{
             }
             return slow.Data;
         }
+
+        
     }
 }

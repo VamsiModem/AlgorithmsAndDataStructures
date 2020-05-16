@@ -6,6 +6,8 @@ using Algorithms.Strings;
 using Algorithms.Trees;
 using Algorithms.Tries;
 using System.Text;
+using Algorithms.Graphs;
+using Algorithms.Generic;
 
 namespace Algorithms
 {
@@ -85,6 +87,17 @@ namespace Algorithms
             //  new int[] {1,2,3,4}.ToSingleLinkedList().ReorderList().Print();
             // Console.WriteLine("-2147483649".ToInteger());
             Console.WriteLine("  hello world!  ".ReverseWordsInString());
+            var graph = new UndirectedGraph<int>();
+            graph.Add(1,2);
+            graph.Add(1,3);
+            graph.Add(3,4);
+            graph.Add(1,5);
+
+            var graph2 = new UndirectedGraph<string>();
+            graph2.Add("v","a");
+            graph2.Add("am","si");
+            graph2.Add("b","v");
+            graph2.Add("v","b");
             //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
             Console.ReadLine();
             
