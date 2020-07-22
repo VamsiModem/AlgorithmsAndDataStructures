@@ -283,5 +283,27 @@ namespace Algorithms.Strings{
             }
             return end - start - 1;
         }
+
+        public static bool IsValidParenthesis(this string s){
+            if(s.Length == 0) return true;
+            Dictionary<char,char> brackets = new Dictionary<char, char>{
+                {'}','{'},{')','('},{']','['}
+            };
+            Stack<char> stack = new Stack<char>();
+            for(int i = 0; i < s.Length; i++){
+                if(stack.Count == 0){
+                    stack.Push(s[i]);
+                }else{
+                    char currentChar = s[i];
+                    bool isClosedBracket = brackets.ContainsKey(currentChar);
+                    if(isClosedBracket){
+                        char poppedChar = stack.Pop();
+                        if(poppedChar != brackets[currentChar])
+                            return false;
+                    }
+                }
+            }
+            return stack.Count == 0;
+        }
     }
 }

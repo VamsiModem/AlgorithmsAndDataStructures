@@ -15,7 +15,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            
+
             //var x = "Hello World!".ReverseWordsInString();
             //Console.WriteLine(x);
             // MinMaxStack stack = new MinMaxStack();
@@ -77,7 +77,7 @@ namespace Algorithms
             // Console.WriteLine("ezupkr".LongestCommonSubSequence("ubmrapg"));
             // Console.WriteLine("abcde".LexicographicallySmallestString());
             // Console.WriteLine("baaabbaabbba".MinMovesToObtainStringWithaAandBWithOut3ConsecutiveLetters());
-            // var tree = new int[]{5,3,7,2,4,6,8}.ToBSTree();
+
             // var node = tree.Serialize().Deserilize();
             // BSTIterator iter = new BSTIterator(tree);
             // string[] array = new string[]{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
@@ -87,20 +87,22 @@ namespace Algorithms
             //  new int[] {1,2,3,4}.ToSingleLinkedList().ReorderList().Print();
             // Console.WriteLine("-2147483649".ToInteger());
             Console.WriteLine("  hello world!  ".ReverseWordsInString());
-            var graph = new UndirectedGraph<int>();
-            graph.Add(1,2);
-            graph.Add(1,3);
-            graph.Add(3,4);
-            graph.Add(1,5);
+            // var graph = new UndirectedGraph<int>();
+            // graph.Add(1,2);
+            // graph.Add(1,3);
+            // graph.Add(3,4);
+            // graph.Add(1,5);
 
-            var graph2 = new UndirectedGraph<string>();
-            graph2.Add("v","a");
-            graph2.Add("am","si");
-            graph2.Add("b","v");
-            graph2.Add("v","b");
+            // var graph2 = new UndirectedGraph<string>();
+            // graph2.Add("v","a");
+            // graph2.Add("am","si");
+            // graph2.Add("b","v");
+            // graph2.Add("v","b");
+            var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
+            Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
             //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
             Console.ReadLine();
-            
+
         }
     }
 }
