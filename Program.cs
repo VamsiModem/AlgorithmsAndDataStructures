@@ -100,7 +100,7 @@ namespace Algorithms
             // graph2.Add("v","b");
             var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
             Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
-            var x = "ababcbacadefegdehijhklij".PartitionLabels();
+            var x = "mouse".Suggestions(new string[] { "mobile", "mouse", "moneypot", "monitor", "mousepad" });
             Console.WriteLine();
             Console.ReadLine();
 

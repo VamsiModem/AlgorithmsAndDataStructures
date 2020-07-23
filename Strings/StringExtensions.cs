@@ -401,5 +401,16 @@ namespace Algorithms.Strings
             }
             return partitions;
         }
+
+        public static List<List<string>> Suggestions(this string key, string[] products)
+        {
+            Array.Sort(products);
+            TrieWithSuggestions trie = new TrieWithSuggestions();
+            for (int i = 0; i < products.Length; i++)
+            {
+                trie.Insert(products[i]);
+            }
+            return trie.Search(key);
+        }
     }
 }
