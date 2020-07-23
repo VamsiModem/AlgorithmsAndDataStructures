@@ -100,7 +100,8 @@ namespace Algorithms
             // graph2.Add("v","b");
             var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
             Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
-            //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
+            var x = "ababcbacadefegdehijhklij".PartitionLabels();
+            Console.WriteLine();
             Console.ReadLine();
 
         }
