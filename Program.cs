@@ -8,6 +8,7 @@ using Algorithms.Tries;
 using System.Text;
 using Algorithms.Graphs;
 using Algorithms.Generic;
+using System.Collections.Generic;
 
 namespace Algorithms
 {
@@ -100,6 +101,13 @@ namespace Algorithms
             // graph2.Add("v","b");
             var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
             Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
+            var connections = new List<IList<int>>{
+                new List<int>{0,1},
+                new List<int>{1,2},
+                new List<int>{2,0},
+                new List<int>{1,3}
+            };
+            var x = new BridgesSolver(connections, 4).Solve();
             //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
             Console.ReadLine();
 
