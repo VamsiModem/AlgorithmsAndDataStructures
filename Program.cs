@@ -101,7 +101,6 @@ namespace Algorithms
             // graph2.Add("v","b");
             var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
             Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
-<<<<<<< HEAD
             var connections = new List<IList<int>>{
                 new List<int>{0,1},
                 new List<int>{1,2},
@@ -110,10 +109,6 @@ namespace Algorithms
             };
             var x = new BridgesSolver(connections, 4).Solve();
             //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
-=======
-            var x = "mouse".Suggestions(new string[] { "mobile", "mouse", "moneypot", "monitor", "mousepad" });
-            Console.WriteLine();
->>>>>>> 55588ca9897153a2cec92ef36d528addab71ddcd
             Console.ReadLine();
 
         }

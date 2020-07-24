@@ -4,20 +4,35 @@ using System.Linq;
 
 namespace Algorithms.Graphs{
     public class BridgesSolver{
-        private readonly IList<IList<int>> _connections;
+        private readonly IList<int>[] _graph;
         private readonly int _size;
         private bool[] _visited;
         private int[] _ids;
         private int[] _lows;
         private int _id = 0;
+  
 
         public BridgesSolver(IList<IList<int>> connections, int size)
         {
-            _connections = connections;
             _size = size;
             _ids = new int[size];
             _lows = new int[size];
             _visited = new bool[size];
+            _graph = BuildGraph(connections);
+        }
+
+        private IList<int>[] BuildGraph(IList<IList<int>> connections)
+        {
+             IList<int>[] graph = new List<int>[_size];
+             foreach(var connection in connections){
+                if(graph[connection.ElementAt(0)] is null)
+                    graph[connection.ElementAt(0)] = new List<int>();
+                graph[connection.ElementAt(0)].Add(connection.ElementAt(1));
+                if(graph[connection.ElementAt(1)] is null)
+                    graph[connection.ElementAt(1)] = new List<int>();
+                graph[connection.ElementAt(1)].Add(connection.ElementAt(0));
+             }
+             return graph;
         }
 
         public IList<IList<int>> Solve(){
@@ -32,7 +47,7 @@ namespace Algorithms.Graphs{
         private void Dfs(int at, int parent, IList<IList<int>> bridges){
             _visited[at] = true;
             _ids[at] = _lows[at] = ++_id;
-            foreach(var to  in _connections.ElementAt(at)){
+            foreach(var to  in _graph[at]){
                 if (to == parent) continue;
                 if(!_visited[to]){
                     Dfs(to, at, bridges);
