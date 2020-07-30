@@ -5,6 +5,7 @@ using System.Text;
 using Algorithms.Models;
 using BenchmarkDotNet.Attributes;
 using Algorithms.Tries;
+using Algorithms.LinkedLists;
 
 namespace Algorithms.Strings
 {
@@ -411,6 +412,57 @@ namespace Algorithms.Strings
                 trie.Insert(products[i]);
             }
             return trie.Search(key);
+        }
+
+        public static string Add(this string s1, string s2){
+            var node1 = s1.ToLinkedList();
+            var node2 = s2.ToLinkedList();
+            var sumString = new StringBuilder();
+            int carry = 0;
+            int value = 0;
+            while(node1 != null || node2 != null){
+                int sum = 0;
+                if(node1 != null){
+                    sum += node1.Data;
+                    node1 = node1.Next;
+                }
+                if(node2 != null){
+                    sum += node2.Data;
+                     node2 = node2.Next;
+                }
+                sum += carry;
+                value = sum % 10;
+                carry = sum /10;
+                sumString.Append(value);
+                
+               
+            }
+            return sumString.Reverse(0,sumString.Length -1).ToString();
+        }
+        public static int NumSplits(this string s) {
+            if(s.Length == 0) return 0;
+            int splitCount = 0;
+            for(int i = 1; i < s.Length ; i++){
+                if(IsGoodSplit(s,i))
+                    splitCount++;
+            }
+            return splitCount;
+        }
+        
+        public static bool IsGoodSplit(string s, int splitAt){
+            return GetUniqueCharCount(s, 0, splitAt) == GetUniqueCharCount(s, splitAt, s.Length);
+        }
+        
+        public static int GetUniqueCharCount(string s, int start, int end){
+            bool[] chars = new bool[26];
+            int unique = 0;
+            for(int i = start; i < end; i++){
+                if(!chars[s[i] - 'a']){
+                    chars[s[i] - 'a'] = true;
+                    unique++;
+                }
+            }
+            return unique;
         }
     }
 }

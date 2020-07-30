@@ -117,5 +117,15 @@ namespace Algorithms.LinkedLists
             }
             return length;
         }
+
+        public static Node ToLinkedList(this string s){
+            Node dummy = new Node(-1);
+            Node head = dummy;
+            for(int i = s.Length - 1; i >= 0; i--){
+                head.Next = new Node(s[i] - '0');
+                head = head.Next;
+            }
+            return dummy.Next;
+        }
     }
 }
