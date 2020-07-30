@@ -8,7 +8,7 @@ using Algorithms.Tries;
 using System.Text;
 using Algorithms.Graphs;
 using Algorithms.Generic;
-using System.Collections.Generic;
+using Algorithms.Heaps;
 
 namespace Algorithms
 {
@@ -99,18 +99,19 @@ namespace Algorithms
             // graph2.Add("am","si");
             // graph2.Add("b","v");
             // graph2.Add("v","b");
-            var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
-            Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
-            var connections = new List<IList<int>>{
-                new List<int>{0,1},
-                new List<int>{1,2},
-                new List<int>{2,0},
-                new List<int>{1,3}
-            };
-            var x = new BridgesSolver(connections, 4).Solve();
-            //Console.WriteLine(new StringBuilder("     dfdfdfdf    ").LeftTrim().RightTrim());
+            // var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
+            // Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
+            // var x = "mouse".Suggestions(new string[] { "mobile", "mouse", "moneypot", "monitor", "mousepad" });
+            var x = new MinHeap();
+            x.Add(3);
+            x.Add(2);
+            x.Add(3);
+            x.Add(1);
+            x.Add(2);
+            x.Add(4);
+            x.Pop();
+            Console.WriteLine();
             Console.ReadLine();
-
         }
     }
 }
