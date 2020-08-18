@@ -102,15 +102,20 @@ namespace Algorithms
             // var tree = new int[] { 5, 2, 12, 1, 3, 9, 21, 19, 25 }.ToBSTree();
             // Console.WriteLine(tree.DistanceBetweenNodes(9, 25));
             // var x = "mouse".Suggestions(new string[] { "mobile", "mouse", "moneypot", "monitor", "mousepad" });
-            var x = new MinHeap();
-            x.Add(3);
-            x.Add(2);
-            x.Add(3);
-            x.Add(1);
-            x.Add(2);
-            x.Add(4);
-            x.Pop();
-            Console.WriteLine();
+            // var x = new MinHeap();
+            // x.Add(3);
+            // x.Add(2);
+            // x.Add(3);
+            // x.Add(1);
+            // x.Add(2);
+            // x.Add(4);
+            var d = new int[]{1,1}.MinSizeSubArraySum(3);
+            //var y = "ADOBECODEBANC".MinWindow("ABC");
+            var dit = new WordDictionary();
+            dit.AddWord("bad");
+            dit.AddWord("mad");
+            //x.Pop();
+            Console.WriteLine(dit.Search("mad"));
             Console.ReadLine();
         }
     }

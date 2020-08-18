@@ -149,6 +149,23 @@ namespace Algorithms.Arrays{
             }
             return dummy.Next;
         }
+
+        public static int MinSizeSubArraySum(this int[] arr, int s){
+            if(arr.Length == 0)return 0;
+            int i = 0, result = arr.Length, j;
+            for(j = 0; j < arr.Length; j++){
+                s -= arr[j];
+                while(s <= 0){
+                    result = Math.Min(result, j -i + 1);
+                    s += arr[i++];
+                }
+            }
+            return result % 3;
+        }
+
+        public static IList<IList<int>> ThreeSumUsingTwoSum(this int[] nums){
+            return new List<IList<int>>();
+        }
     }
 
     

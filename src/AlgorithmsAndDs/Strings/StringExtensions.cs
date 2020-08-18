@@ -414,31 +414,31 @@ namespace Algorithms.Strings
             return trie.Search(key);
         }
 
-        public static string Add(this string s1, string s2){
-            var node1 = s1.ToLinkedList();
-            var node2 = s2.ToLinkedList();
-            var sumString = new StringBuilder();
-            int carry = 0;
-            int value = 0;
-            while(node1 != null || node2 != null){
-                int sum = 0;
-                if(node1 != null){
-                    sum += node1.Data;
-                    node1 = node1.Next;
-                }
-                if(node2 != null){
-                    sum += node2.Data;
-                     node2 = node2.Next;
-                }
-                sum += carry;
-                value = sum % 10;
-                carry = sum /10;
-                sumString.Append(value);
+        // public static string Add(this string s1, string s2){
+        //     var node1 = s1.ToLinkedList();
+        //     var node2 = s2.ToLinkedList();
+        //     var sumString = new StringBuilder();
+        //     int carry = 0;
+        //     int value = 0;
+        //     while(node1 != null || node2 != null){
+        //         int sum = 0;
+        //         if(node1 != null){
+        //             sum += node1.Data;
+        //             node1 = node1.Next;
+        //         }
+        //         if(node2 != null){
+        //             sum += node2.Data;
+        //              node2 = node2.Next;
+        //         }
+        //         sum += carry;
+        //         value = sum % 10;
+        //         carry = sum /10;
+        //         sumString.Append(value);
                 
                
-            }
-            return sumString.Reverse(0,sumString.Length -1).ToString();
-        }
+        //     }
+        //     return sumString.Reverse(0,sumString.Length -1).ToString();
+        // }
         public static int NumSplits(this string s) {
             if(s.Length == 0) return 0;
             int splitCount = 0;
@@ -463,6 +463,41 @@ namespace Algorithms.Strings
                 }
             }
             return unique;
+        }
+        public static string MinWindow(this string s, string t) {
+            string result = string.Empty;
+            if(s.Length * t.Length == 0) return result;
+            Dictionary<char,int> tMap = new Dictionary<char,int>();
+            Dictionary<char,int> sMap = new Dictionary<char,int>();
+            for(int i = 0; i < t.Length; i++){
+                if(tMap.ContainsKey(t[i]))tMap[t[i]]++;
+                else tMap.Add(t[i], 1);
+            }
+            int required = tMap.Count;
+            int formed = 0;
+            int left  = 0, right = 0;
+            int[] ans = new int[]{-1, 0, 0};
+            while(right < s.Length){
+                if(sMap.ContainsKey(s[right]))sMap[s[right]]++;
+                else {
+                    sMap.Add(s[right], 1);
+                }
+                if(tMap.ContainsKey(s[right]) && sMap[s[right]] == tMap[s[right]]){
+                    formed++;
+                }
+                while(left <= right && required == formed){
+                    if(ans[0] == -1 || ans[0] > right - left + 1){
+                        ans[0] = right - left + 1;
+                        ans[1] = left;
+                        ans[2] = right;
+                    }
+                    sMap[s[left]]--;
+                    if(tMap.ContainsKey(s[left]) && sMap[s[left]] < tMap[s[left]]) formed--;
+                    left++;
+                }
+                right++;
+            }
+            return ans[0] == -1 ? string.Empty : s.Substring(ans[1], ans[2] + ans[1] - 1);
         }
     }
 }
