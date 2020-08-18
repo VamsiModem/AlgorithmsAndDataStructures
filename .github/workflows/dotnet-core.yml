@@ -1,5 +1,8 @@
-trigger:
-- master
+on:	pool:
+  push:	  vmImage: 'windows-latest'
+    branches: [ master ]	
+  pull_request:	
+    branches: [ master ]
 
 pool:
   vmImage: 'windows-latest'
