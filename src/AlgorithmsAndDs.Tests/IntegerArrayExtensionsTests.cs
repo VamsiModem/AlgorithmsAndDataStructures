@@ -11,7 +11,15 @@ namespace AlgorithmsAndDs.Tests
         public void Test_3_Sum(int[] nums, IList<IList<int>> expectedValue)
         {
             var result = nums.ThreeSumUsingTwoSum();
-            Assert.Equal(1,1);
+            Assert.Equal(expectedValue, result);
+        }
+
+        [Theory]
+        [MemberData(nameof(IntegerArrayExtensionsData.GetPlusOne), MemberType= typeof(IntegerArrayExtensionsData))]
+        public void Test_PlusOne(int[] nums, int[] expectedValue)
+        {
+            var result = nums.PlusOne();
+            Assert.Equal(expectedValue, result);
         }
     }
 }

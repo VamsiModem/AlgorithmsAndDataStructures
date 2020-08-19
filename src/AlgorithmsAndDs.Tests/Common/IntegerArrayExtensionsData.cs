@@ -18,5 +18,21 @@ namespace AlgorithmsAndDs.Tests
                 }
             };
         }
+
+        public static IEnumerable<object[]> GetPlusOne(){
+           
+            yield return new object[]{
+                new int[] {1, 2, 3}, 
+                new int[] {1, 2, 4}, 
+            };
+            yield return new object[]{
+                new int[] {1, 2, 9}, 
+                new int[] {1, 3, 0}, 
+            };
+            yield return new object[]{
+                new int[] {9,9}, 
+                new int[] {1, 0, 0}, 
+            };
+        }
     } 
 }

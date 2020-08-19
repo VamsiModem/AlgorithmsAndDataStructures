@@ -164,7 +164,45 @@ namespace Algorithms.Arrays{
         }
 
         public static IList<IList<int>> ThreeSumUsingTwoSum(this int[] nums){
-            return new List<IList<int>>();
+            Array.Sort(nums);
+            IList<IList<int>> result = new List<IList<int>>();
+            for(int i = 0; i < nums.Length; i++){
+                if(i == 0 || nums[i] != nums[i - 1])
+                    TwoSum(nums, result, i);
+            }
+            return result;
+        }
+
+     
+        private static void TwoSum(int[] nums, IList<IList<int>> result, int i)
+        {
+            HashSet<int> set = new HashSet<int>();
+            for(int j = i; j < nums.Length; j++){
+                var difference = -nums[i] - nums[j];
+                if(set.Contains(difference)){
+                    var list = new List<int> {nums[i], nums[j], difference};
+                    list.Sort();
+                    result.Add(list);
+                    while(j + 1 < nums.Length && nums[j] == nums[j + 1])
+                        j++;
+                }
+                set.Add(nums[j]);
+            }
+        }
+
+        public static int[] PlusOne(this int [] arr){
+            if(arr.Length == 0) return new int[]{};
+            for(int i = arr.Length - 1; i >= 0; i--){
+                if(arr[i] == 9)
+                    arr[i] = 0;
+                else{
+                    arr[i]++;
+                    return arr;
+                }
+            }
+            arr = new int[arr.Length + 1];
+            arr[0] = 1;
+            return arr;
         }
     }
 
