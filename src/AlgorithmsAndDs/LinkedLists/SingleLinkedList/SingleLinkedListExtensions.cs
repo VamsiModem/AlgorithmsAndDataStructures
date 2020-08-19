@@ -165,5 +165,27 @@ namespace Algorithms.LinkedLists
             }
             return dummy.Next;
         }
+
+        public static Node SwapNodePairs(this Node node)
+        {
+            if (node is null) return node;
+            Node dummy = new Node(-1);
+            dummy.Next = node;
+            Node prev = dummy;
+
+            while (node != null && node.Next != null)
+            {
+                var firstNode = node;
+                var secondNode = node.Next;
+
+                prev.Next = secondNode;
+                firstNode.Next = secondNode.Next;
+                secondNode.Next = firstNode;
+
+                prev = firstNode;
+                node = firstNode.Next;
+            }
+            return dummy.Next;
+        }
     }
 }
