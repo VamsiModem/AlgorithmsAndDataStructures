@@ -16,5 +16,21 @@ namespace AlgorithmsAndDs.Tests
                 new int[] {2,1,4,3}.ToSingleLinkedList()
             };
         }
+
+        public static IEnumerable<object[]> GetNodeLengthData()
+        {
+
+            yield return new object[]{
+                new int[] {1,2,3,4}.ToSingleLinkedList(),
+                4
+            };
+
+             yield return new object[]{
+                new int[] {}.ToSingleLinkedList(),
+                0
+            };
+        }
+
+        
     }
 }

@@ -8,43 +8,20 @@ namespace Algorithms.LinkedLists
     public class SingleLinkedList
     {
         private int _length;
-        private Node _head;
+        private SingleLinkedListNode _head;
         public SingleLinkedList()
         {
             _length = 0;
             _head = null;
         }
         public int Length { get => this._length; }
-        public class Node
-        {
-            public int Data { get; set; }
-            public Node Next { get; set; }
-            public Node(int data) { this.Data = data; }
-            public override bool Equals(object obj)
-            {
-                var node1 = this;
-                if (obj is Node)
-                {
-                    Node node = obj as Node;
-                    while (node1 != null && node != null)
-                    {
-                        if (node1.Data != node.Data)
-                        {
-                            return false;
-                        }
-                        node1 = node1.Next;
-                        node = node.Next;
-                    }
-                    return (node is null && node1 is null) || (node.Data == node1.Data);
-                }
-                return false;
-            }
-        }
+
+
         public override string ToString()
         {
             if (_head is null) { return string.Empty; }
             StringBuilder output = new StringBuilder();
-            Node current = this._head;
+            SingleLinkedListNode current = this._head;
             while (current != null)
             {
                 output.Append(current.Data);
@@ -60,8 +37,8 @@ namespace Algorithms.LinkedLists
         {
             Console.WriteLine($"Before Add...");
             this.Print();
-            Node newNode = new Node(data);
-            Node current = this._head;
+            SingleLinkedListNode newNode = new SingleLinkedListNode(data);
+            SingleLinkedListNode current = this._head;
             if (_head is null)
             {
                 this._head = newNode;
@@ -82,7 +59,7 @@ namespace Algorithms.LinkedLists
         {
             if (_head is null) { Console.WriteLine("No nodes print."); }
             StringBuilder output = new StringBuilder();
-            Node current = this._head;
+            SingleLinkedListNode current = this._head;
             while (current != null)
             {
                 output.Append(current.Data);
@@ -99,7 +76,7 @@ namespace Algorithms.LinkedLists
 
         public void Reverse()
         {
-            Node prev = null, current = this._head, next = null;
+            SingleLinkedListNode prev = null, current = this._head, next = null;
             while (current != null)
             {
                 next = current.Next;
@@ -115,8 +92,8 @@ namespace Algorithms.LinkedLists
         {
             if (this._head is null) { return; }
             HashSet<int> set = new HashSet<int>();
-            Node current = this._head;
-            Node previous = null;
+            SingleLinkedListNode current = this._head;
+            SingleLinkedListNode previous = null;
             while (current != null)
             {
                 if (set.Contains(current.Data))
@@ -136,7 +113,7 @@ namespace Algorithms.LinkedLists
         public void RemoveDuplicatesFromSortedList()
         {
             if (this._head is null) { return; }
-            Node current = this._head;
+            SingleLinkedListNode current = this._head;
             while (current != null && current.Next != null)
             {
                 if (current.Data == current.Next.Data)
@@ -154,8 +131,8 @@ namespace Algorithms.LinkedLists
         public int? KthToTheLast(int k)
         {
             if (this._head is null) { return null; }
-            Node slow = this._head;
-            Node fast = this._head;
+            SingleLinkedListNode slow = this._head;
+            SingleLinkedListNode fast = this._head;
             for (int i = 0; i < k; i++)
             {
                 if (fast.Next is null) { return null; }
@@ -168,7 +145,5 @@ namespace Algorithms.LinkedLists
             }
             return slow.Data;
         }
-
-
     }
 }
