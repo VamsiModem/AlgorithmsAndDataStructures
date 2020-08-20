@@ -252,6 +252,35 @@ namespace Algorithms.Arrays
             arr[0] = 1;
             return arr;
         }
+
+        public static int[] Range(this int[] arr, int target)
+        {
+            var result = new int[2];
+            result[0] = PriorityBasedBinarySearch(arr, target, true);
+            result[1] = PriorityBasedBinarySearch(arr, target, false);
+            return result;
+        }
+
+        // public static int[] FindKClosest(this int[] nums, int k, int target)
+        // {
+
+        // }
+
+        private static int PriorityBasedBinarySearch(int[] nums, int target, bool onleft)
+        {
+            int index = -1;
+            int left = 0, right = nums.Length - 1, mid = 0;
+            while (left <= right)
+            {
+                mid = left + (right - left) / 2;
+                if ((target < nums[mid]) || (nums[mid] == target && onleft))
+                    right = mid - 1;
+                else
+                    left = mid + 1;
+                if (nums[mid] == target) index = mid;
+            }
+            return index;
+        }
     }
 
 
