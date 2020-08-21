@@ -30,6 +30,14 @@ namespace AlgorithmsAndDs.Tests
             Assert.Equal(expectedValue, result);
         }
 
+        [Theory]
+        [MemberData(nameof(IntegerArrayExtensionsData.MergeSortIndiciesData), MemberType = typeof(IntegerArrayExtensionsData))]
+        public void Test_MergeSort(int[] nums, int[] expectedValue)
+        {
+            var result = nums.MergeSortAndReturnIndexes();
+            Assert.Equal(expectedValue, result);
+        }
+
         // [Theory]
         // [MemberData(nameof(IntegerArrayExtensionsData.GetKClosestData), MemberType = typeof(IntegerArrayExtensionsData))]
         // public void Test_KClosest(int[] nums, int k, int target, int[] expectedValue)

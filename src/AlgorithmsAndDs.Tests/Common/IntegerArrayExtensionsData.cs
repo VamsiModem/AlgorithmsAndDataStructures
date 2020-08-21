@@ -73,5 +73,14 @@ namespace AlgorithmsAndDs.Tests
                 new int[] {1,2,3,4},
             };
         }
+
+        public static IEnumerable<object[]> MergeSortIndiciesData()
+        {
+
+            yield return new object[]{
+                new int[] {3,6,1,2,8},
+                new int[] {1, 2, 3, 6, 8},
+            };
+        }
     }
 }

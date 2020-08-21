@@ -281,7 +281,42 @@ namespace Algorithms.Arrays
             }
             return index;
         }
+
+        public static int[] MergeSortAndReturnIndexes(this int[] arr){
+            int[] indices = new int[arr.Length];
+            for(int i = 0; i < arr.Length; i++)
+                indices[i] = i;
+            MergeSort(arr, indices,0, arr.Length - 1);
+            return arr;
+        }
+        //1,2,3,4,5,6
+        private static void MergeSort(int[] arr, int[] indices, int left, int right)
+        {
+            if(left < right){
+                int mid = (left + right )/ 2;
+                MergeSort(arr, indices, left, mid);
+                MergeSort(arr, indices, mid + 1, right);
+                Merge(arr, indices, left, mid, right);
+            }
+        }
+
+        private static void Merge(int[] arr, int[] indices, int left, int mid, int right)
+        {
+            int[] temp = new int[right - left + 1];
+            int i = left, j = mid + 1, at = 0;
+            while(i <= mid && j <= right){
+                if(arr[i] <= arr[j])
+                    temp[at] = arr[i++];
+                else
+                    temp[at] = arr[j++];
+                at++;
+            }
+            while(i <= mid)
+                temp[at++] = arr[i++];
+            while(j <= right)
+                temp[at++] = arr[j++];
+            for(i = left; i <= right; i++)
+                arr[i] = temp[i - left];
+        }
     }
-
-
 }
