@@ -78,8 +78,8 @@ namespace AlgorithmsAndDs.Tests
         {
 
             yield return new object[]{
-                new int[] {3,6,1,2,8},
-                new int[] {1, 2, 3, 6, 8},
+                new int[] {5,2,6,1},
+                new int[] {2,1,1,0},
             };
         }
     }

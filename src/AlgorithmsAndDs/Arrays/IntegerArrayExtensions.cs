@@ -282,41 +282,54 @@ namespace Algorithms.Arrays
             return index;
         }
 
-        public static int[] MergeSortAndReturnIndexes(this int[] arr){
+        public static int[] MergeSortAndReturnIndexes(this int[] arr)
+        {
             int[] indices = new int[arr.Length];
-            for(int i = 0; i < arr.Length; i++)
+            int[] counts = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
                 indices[i] = i;
-            MergeSort(arr, indices,0, arr.Length - 1);
-            return arr;
+            MergeSort(arr, indices, counts, 0, arr.Length - 1);
+            return counts;
         }
         //1,2,3,4,5,6
-        private static void MergeSort(int[] arr, int[] indices, int left, int right)
+        private static void MergeSort(int[] arr, int[] indices, int[] counts, int left, int right)
         {
-            if(left < right){
-                int mid = (left + right )/ 2;
-                MergeSort(arr, indices, left, mid);
-                MergeSort(arr, indices, mid + 1, right);
-                Merge(arr, indices, left, mid, right);
+            if (left < right)
+            {
+                int mid = (left + right) / 2;
+                MergeSort(arr, indices, counts, left, mid);
+                MergeSort(arr, indices, counts, mid + 1, right);
+                Merge(arr, indices, counts, left, mid, right);
             }
         }
 
-        private static void Merge(int[] arr, int[] indices, int left, int mid, int right)
+        private static void Merge(int[] arr, int[] indices, int[] counts, int l, int mid, int r)
         {
-            int[] temp = new int[right - left + 1];
-            int i = left, j = mid + 1, at = 0;
-            while(i <= mid && j <= right){
-                if(arr[i] <= arr[j])
-                    temp[at] = arr[i++];
+            int[] temp = new int[r - l + 1];
+            int left = l, right = mid + 1, at = 0, end = r, rightCount = 0;
+            while (left <= mid && right <= end)
+            {
+                if (arr[indices[left]] <= arr[indices[right]])
+                {
+                    temp[at] = indices[left];
+                    counts[indices[left++]] += rightCount;
+                }
                 else
-                    temp[at] = arr[j++];
+                {
+                    temp[at] = indices[right++];
+                    rightCount++;
+                }
                 at++;
             }
-            while(i <= mid)
-                temp[at++] = arr[i++];
-            while(j <= right)
-                temp[at++] = arr[j++];
-            for(i = left; i <= right; i++)
-                arr[i] = temp[i - left];
+            while (left <= mid)
+            {
+                temp[at++] = indices[left];
+                counts[indices[left++]] += rightCount;
+            }
+            while (right <= end)
+                temp[at++] = indices[right++];
+            for (int i = l; i <= end; i++)
+                indices[i] = temp[i - l];
         }
     }
 }
