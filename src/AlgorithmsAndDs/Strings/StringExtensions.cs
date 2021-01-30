@@ -499,5 +499,35 @@ namespace Algorithms.Strings
             }
             return ans[0] == -1 ? string.Empty : s.Substring(ans[1], ans[2] + ans[1] - 1);
         }
+        //1 + (2 -2) + 2
+        public static int EvaluateExpression(this string s){
+            int result = 0, current = 0 ;
+            char op = '+';
+            while(current < s.Length){
+                if(s[current] == '(' || s[current] == ')' || s[current] == ' '){
+                    current++;
+                }
+                else if(char.IsDigit(s[current])){
+                    int number = s[current++] - '0';
+                    // if(current < s.Length && char.IsDigit(s[current])){
+                    //     number *= 10;
+                    // }
+                    while(current < s.Length && char.IsDigit(s[current]))
+                        number =  (number * 10) + (s[current++] - '0');
+                    
+                    if(op == '+')
+                        result += number;
+                    else if(op == '-')
+                        result -= number;
+                    else if(op == '*')
+                        result *= number;
+                    else
+                        result /= number;
+                    
+                }else if(s[current] == '+' || s[current] == '-')
+                    op = s[current++];
+            }
+            return result;
+        }
     }
 }

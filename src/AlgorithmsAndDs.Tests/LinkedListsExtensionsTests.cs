@@ -20,5 +20,12 @@ namespace AlgorithmsAndDs.Tests
             var result = value?.Length ?? 0;
             Assert.True(result == expected);
         }
+        [Theory]
+        [MemberData(nameof(SingleLinkedListExtensionsData.GetRemoveDuplicatesIIData), MemberType = typeof(SingleLinkedListExtensionsData))]
+        public void Test_Duplicates(SingleLinkedListNode value, SingleLinkedListNode expected)
+        {
+            var result = value.RemoveDuplicatesFromSortedListII();
+            Assert.True(result.Equals(expected));
+        }
     }
 }

@@ -160,5 +160,28 @@ namespace Algorithms.LinkedLists
             }
             return dummy.Next;
         }
+
+        public static SingleLinkedListNode RemoveDuplicatesFromSortedListII(this SingleLinkedListNode head)
+        {
+            if (head is null) return head; 
+            var dummy = new SingleLinkedListNode(-1);
+            dummy.Next = head;
+            var prev = dummy;
+
+            while(head != null){
+                if(head.Next != null && head.Data == head.Next.Data){
+                    while(head.Next != null && head.Data == head.Next.Data){
+                        head = head.Next;
+                    }
+                    prev.Next = head.Next;
+                }
+                else {
+                    prev = prev.Next;
+                }
+                head = head.Next;
+            }
+
+            return dummy.Next;
+        }
     }
 }

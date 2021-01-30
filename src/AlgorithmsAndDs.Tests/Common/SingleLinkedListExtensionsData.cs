@@ -30,6 +30,18 @@ namespace AlgorithmsAndDs.Tests
                 0
             };
         }
+        public static IEnumerable<object[]> GetRemoveDuplicatesIIData()
+        {
+
+            yield return new object[]{
+                new int[] {1,2,3,3,4,4,5}.ToSingleLinkedList(),
+                new int[] {1,2,5}.ToSingleLinkedList()
+            };
+             yield return new object[]{
+                new int[] {1,1,1,2,3}.ToSingleLinkedList(),
+                new int[] {2,3}.ToSingleLinkedList()
+            };
+        }
 
         
     }
